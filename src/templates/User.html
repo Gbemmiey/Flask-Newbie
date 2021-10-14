@@ -6,6 +6,16 @@
 </head>
 <body>
 <h1>Hello, {{ name | capitalize}}</h1>
-<p></p>
+<p>
+    Hello, How are you doing? <br>
+    {% if name %}
+        Hello, {{ name }}!
+    {%  else %}
+        Hello, Stranger!
+    {% endif %}
+
+    {% include 'macros.html' %}
+        {{ render_comment(comments) }}
+</p>
 </body>
 </html>
