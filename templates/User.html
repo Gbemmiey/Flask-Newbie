@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>{{ name | capitalize}}'s Feed</title> {% endblock %}
+    {% block head %}
+        {{ super() }}
+        <style>
+        </style>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <h1>Hello, {{ name | capitalize}}</h1>
+    <p>
+        Hello, How are you doing? <br>
+        {% if name %}
+            Hello, {{ name }}!
+        {%  else %}
+            Hello, Stranger!
+        {% endif %}
+    </p>
+{% endblock %}
+</body>
+</html>
