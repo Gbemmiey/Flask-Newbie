@@ -15,7 +15,7 @@ def index():
     # return response, user_agent, redirect
 
 
-@app.route('/user/<name>')
+@app.route('/User/<name>')
 def user(name):
     comments = {str(name), "goes", "to", "school"}
     return render_template('User.html', name=name)
@@ -29,6 +29,16 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_service_error(e):
     return render_template('500.html'), 500
+
+
+@app.route('/Login')
+def login():
+    return render_template('Login.html')
+
+
+@app.route('/Signup')
+def signup():
+    return render_template('Signup.html')
 
 
 if __name__ == '__main__':
