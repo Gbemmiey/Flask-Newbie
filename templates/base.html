@@ -2,6 +2,7 @@
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
+    {{ moment.locale('NG') }}
 {% endblock %}
 {% block head %}
     {{ super() }}
@@ -41,10 +42,19 @@
     <div class="container">
         {% block page_content %}{% endblock %}
     </div>
-    <div class="footer">
+    <div class="footer | text-center">
         <hr>
         <p>
-            This web application was created by <em><b>deft_dev</b></em> using Flask. {{ access_time }}
+            This web application was created by <em><b>deft_dev</b></em> using Flask. <br>
+            <div class="text-center">
+                <p> Local date and time is {{ moment(access_time).format('LLL') }}
+                    <br> That was {{ moment(access_time).fromNow(refresh=True) }}
+                </p>
+
+                <p>
+                    Current time in Coordinated Universal Time (UTC) : {{ access_time }}
+                </p>
+            </div>
         </p>
     </div>
 {% endblock %}
