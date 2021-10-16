@@ -3,15 +3,18 @@ from flask import render_template
 from flask import request
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from datetime import datetime
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 
 @app.route('/')
 def index():
     user_agent = request.headers.get('User-Agent')
-    return render_template('index.html', browser_details=user_agent)
+    current_time = datetime.utcnow()
+    return render_template('index.html', browser_details=user_agent, access_time=current_time)
     # return response, user_agent, redirect
 
 

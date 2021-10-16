@@ -14,9 +14,6 @@ MarkupSafe==2.0.1
 mccabe==0.6.1
 platformdirs==2.3.0
 pylint==2.11.1
-PyQt5==5.15.4
-PyQt5-Qt5==5.15.2
-PyQt5-sip==12.9.0
 toml==0.10.2
 typing-extensions==3.10.0.2
 visitor==0.1.3
