@@ -4,8 +4,11 @@ from flask import request
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
+from contactForm import ContactForm
+from loginForm import LoginForm
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'asdf ;lkj'
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
@@ -36,14 +39,34 @@ def internal_service_error(e):
     return render_template('500.html', access_time=current_time), 500
 
 
-@app.route('/Login')
+@app.route('/Login', methods=['GET', 'POST'])
 def login():
-    return render_template('Login.html', access_time=current_time)
+    nick = None
+    password = None
+    form = LoginForm()
+    if form.validate_on_submit():
+        nick = form.nickname.data
+        form.nickname.data = ''
+        password = form.password.data
+        form.password.data = ''
+    return render_template('Login.html', form=form, access_time=current_time)
 
 
-@app.route('/Signup')
+@app.route('/Signup', methods=['GET', 'POST'])
 def signup():
-    return render_template('Signup.html', access_time=current_time)
+    name = None
+    nickname = None
+    email = None
+    password = None
+    form = ContactForm()
+    if form.validate_on_submit():
+        nickname = form.nickname.data
+        form.nickname.data = ''
+        name = form.name.data
+        form.name.data = ''
+        password = form.password.data
+        form.password.data = ''
+    return render_template('Signup.html', form=form, name=name, nick=nickname, access_time=current_time)
 
 
 if __name__ == '__main__':
