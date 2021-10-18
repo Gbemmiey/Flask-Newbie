@@ -1,6 +1,9 @@
+import os
+
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import send_from_directory
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
@@ -14,6 +17,12 @@ moment = Moment(app)
 
 
 current_time = datetime.utcnow()
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/')
