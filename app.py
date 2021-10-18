@@ -1,9 +1,6 @@
-import os
-
 from flask import Flask
 from flask import render_template
 from flask import request
-from flask import send_from_directory
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
@@ -15,14 +12,7 @@ app.config['SECRET_KEY'] = 'asdf ;lkj'
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
-
 current_time = datetime.utcnow()
-
-
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico')
 
 
 @app.route('/')
