@@ -66,7 +66,7 @@ def signup():
         form.name.data = ''
         password = form.password.data
         form.password.data = ''
-    return render_template('Signup.html', form=form, name=name, nick=nickname, access_time=current_time)
+    return render_template('Signup.html', form=form, access_time=current_time)
 
 
 if __name__ == '__main__':
